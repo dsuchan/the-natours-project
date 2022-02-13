@@ -1,0 +1,42 @@
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0%;
+  box-sizing: inherit; 
+}
+
+html {
+  font-size: 62.5%;
+  /* this will make the default font size of 16px to 10px and allow the user to change the font size as they want and make the layout scalable with that font size */
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px, 12/16 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $primary-clr;
+  color: $clr-white;
+}
+
